@@ -14,6 +14,8 @@ public class PredictTestRecordReader extends RecordReader<Text, Text> {
     Text key = new Text();
     Text value = new Text();
     Boolean flag = true;
+
+    // 创建了LineRecordReader
     LineRecordReader reader = new LineRecordReader();
 
     @Override
@@ -23,6 +25,9 @@ public class PredictTestRecordReader extends RecordReader<Text, Text> {
         reader.initialize(inputSplit, taskAttemptContext);
     }
 
+    // 对key和value都做了改变
+    // key是测试文件的不带.txt后缀的文件名和类名的组合，并用&分隔二者
+    // value是文件中所有的单词
     @Override
     public boolean nextKeyValue() throws IOException {
         if (flag) {

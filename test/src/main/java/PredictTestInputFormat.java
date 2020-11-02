@@ -10,6 +10,7 @@ public class PredictTestInputFormat extends FileInputFormat<Text, Text> {
     @Override
     public RecordReader createRecordReader(InputSplit inputSplit, TaskAttemptContext taskAttemptContext) throws IOException {
 
+        // 创建了自己定义的PredictTestRecordReader，来对输入格式进行限定
         return new PredictTestRecordReader();
     }
 }

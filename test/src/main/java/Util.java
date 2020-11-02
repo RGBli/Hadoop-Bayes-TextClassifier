@@ -9,11 +9,11 @@ public class Util {
     //训练输入父目录
     public static String INPUT_PATH = "/bayes/data/train/";
     //类别统计输出目录
-    public static String OUTPUT_PATH = "/bayes/output1/";
+    public static String OUTPUT_PATH1 = "/bayes/output1/";
     //class-term统计输出目录
-    public static String OUTPUT_PATH1 = "/bayes/output2/";
+    public static String OUTPUT_PATH2 = "/bayes/output2/";
     //最终TEST测试分类结果输出目录
-    public static String OUTPUT_PATH2 = "/bayes/output3/";
+    public static String OUTPUT_PATH3 = "/bayes/output3/";
     //Test测试分类输入文件父目录，具体测试文件在该目录下具体类别的子目录
     public static String INPUT_PATH_TEST = "/bayes/data/test/";
 
@@ -31,7 +31,6 @@ public class Util {
 
     //从路径中抽取文件docId
     private static Pattern filenamePattern = Pattern.compile("/(\\w*).txt");
-
     public static String getFilename(String text) {
         Matcher matcher = filenamePattern.matcher(text);
         if (matcher.find()) {

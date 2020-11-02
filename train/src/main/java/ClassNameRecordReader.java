@@ -6,7 +6,7 @@ import org.apache.hadoop.mapreduce.RecordReader;
 import org.apache.hadoop.mapreduce.TaskAttemptContext;
 import org.apache.hadoop.mapreduce.lib.input.FileSplit;
 
-public class ClassnameRecordReader extends RecordReader<NullWritable, Text> {
+public class ClassNameRecordReader extends RecordReader<NullWritable, Text> {
     private FileSplit fileSplit;
     private Configuration conf;
     private boolean flag = true;
@@ -18,9 +18,10 @@ public class ClassnameRecordReader extends RecordReader<NullWritable, Text> {
         conf = taskAttemptContext.getConfiguration();
     }
 
+    // 是这个类中最重要的方法
+    // 功能是获取路径中的类名，提取出来给value，并不对key做改变
     @Override
     public boolean nextKeyValue() {
-        //获取filesplit路径中的类名，提取出来给value
         if (flag) {
             String path = fileSplit.getPath().toString();
             value.set(Util.getClassname(path));

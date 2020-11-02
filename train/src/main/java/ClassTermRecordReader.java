@@ -13,6 +13,8 @@ public class ClassTermRecordReader extends RecordReader<Text, Text> {
     private Text value = new Text();
     FileSplit fileSplit;
     Configuration conf;
+
+    // 定义了一个LineRecordReader
     LineRecordReader reader = new LineRecordReader();
 
     @Override
@@ -22,6 +24,9 @@ public class ClassTermRecordReader extends RecordReader<Text, Text> {
         reader.initialize(inputSplit, taskAttemptContext);
     }
 
+
+    // 对key和value都做了改变
+    // key是该文档的类名，value是单词
     @Override
     public boolean nextKeyValue() throws IOException {
         if (reader.nextKeyValue()) {
@@ -47,7 +52,7 @@ public class ClassTermRecordReader extends RecordReader<Text, Text> {
         try {
             return reader.getProgress();
         } catch (IOException e) {
-
+            e.printStackTrace();
         }
         return 0;
     }

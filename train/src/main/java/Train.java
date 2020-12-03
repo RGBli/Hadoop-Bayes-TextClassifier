@@ -10,7 +10,7 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 import java.io.IOException;
 
-public class WordCount {
+public class Train {
 
     // 计算每个类分别有多少个文档的Mapper
     public static class ClassNameMapper
@@ -68,7 +68,7 @@ public class WordCount {
         // 第一个作业classname count的配置
         Configuration conf = new Configuration();
         Job classCountJob = Job.getInstance(conf, "class count");
-        classCountJob.setJarByClass(WordCount.class);
+        classCountJob.setJarByClass(Train.class);
         classCountJob.setMapperClass(ClassNameMapper.class);
         classCountJob.setCombinerClass(IntSumReducer.class);
         classCountJob.setReducerClass(IntSumReducer.class);
@@ -91,7 +91,7 @@ public class WordCount {
 
         // 第二个作业class-term count的配置
         Job classTermCountJob = Job.getInstance(conf, "class-term count");
-        classTermCountJob.setJarByClass(WordCount.class);
+        classTermCountJob.setJarByClass(Train.class);
         classTermCountJob.setMapperClass(ClassTermMapper.class);
         classTermCountJob.setCombinerClass(IntSumReducer.class);
         classTermCountJob.setReducerClass(IntSumReducer.class);

@@ -67,7 +67,7 @@ public class Train {
     public static void main(String[] args) throws Exception {
         // 第一个作业classname count的配置
         Configuration conf = new Configuration();
-        Job classCountJob = Job.getInstance(conf, "class count");
+        Job classCountJob = Job.getInstance(conf, "train");
         classCountJob.setJarByClass(Train.class);
         classCountJob.setMapperClass(ClassNameMapper.class);
         classCountJob.setCombinerClass(IntSumReducer.class);
